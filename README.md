@@ -73,6 +73,7 @@ TMDB has more than 700,000 movies in its database. to access movies data for fre
  ## Search Screen
  ## Details Screen
  ## Favorites Screen
+ 
  ## Watchlist
  ## User Menu Screen
  ## My Profile Screen
@@ -214,3 +215,15 @@ The following open-source packages were used in development of PopcornTime:
  - [About Presentation and Container Pattern](https://blog.bitsrc.io/implementing-the-container-pattern-using-react-hooks-f490a8492d05).
  - [About creating REST APIs using Django REST Framework](https://stackabuse.com/creating-a-rest-api-with-django-rest-framework/).
  - [About recommendation algorithms](https://towardsdatascience.com/brief-on-recommender-systems-b86a1068a4dd.).
+
+
+
+
+
+
+
+![logoutGif](https://user-images.githubusercontent.com/99785438/162812854-02a18e33-bab6-4689-9b2c-4b012e04e214.gif)
+
+
+
+
