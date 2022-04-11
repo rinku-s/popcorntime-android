@@ -66,19 +66,56 @@ TMDB has more than 700,000 movies in its database. to access movies data for fre
 
   
 # App Preview
- ## Video Preview
  ## Register Screen
- ## Login Screen
- ## Home Screen
- ## Search Screen
- ## Details Screen
- ## Favorites Screen
  
+![register](https://user-images.githubusercontent.com/99785438/162828499-a4cc753b-15d8-4947-a063-32f6c7a1b33b.gif)
+
+ ## Login Screen
+ 
+ Login
+ 
+ ![login](https://user-images.githubusercontent.com/99785438/162818944-6491c71b-5ad1-48ee-8829-0145a0796426.gif)
+ 
+ Logout
+ 
+![logoutGif](https://user-images.githubusercontent.com/99785438/162812854-02a18e33-bab6-4689-9b2c-4b012e04e214.gif)
+
+## Home Screen
+ 
+ 
+![homepage](https://user-images.githubusercontent.com/99785438/162829973-a2ec561a-d7eb-4521-9474-cc6cdb703caa.jpg)
+
+ ## Search Screen
+
+![searchscreen](https://user-images.githubusercontent.com/99785438/162830736-31653b48-72d7-46c5-81a2-0a5d5a5eedcf.jpg)
+
+ ## Details Screen
+ 
+  ![viewrec](https://user-images.githubusercontent.com/99785438/162819035-627d4f63-8a91-4476-9f6e-e3a94bce95d6.gif)
+
+ ## Favorites Screen
+
+  ![fav](https://user-images.githubusercontent.com/99785438/162819118-966a53ad-dec6-44e5-a765-73246904d5de.gif)
+
  ## Watchlist
+ 
+![watchlist-1](https://user-images.githubusercontent.com/99785438/162835277-b10539fb-4e8d-473a-b9a9-898f5c980fbe.jpg)
+
+ ![watchlist](https://user-images.githubusercontent.com/99785438/162834607-5389d5d3-f282-4efc-81e2-3ee6094be3c7.jpg)
+ 
  ## User Menu Screen
+ 
+![usermenu](https://user-images.githubusercontent.com/99785438/162830789-a4f4d0a1-596d-436f-a834-0db9fb111114.jpg)
+
  ## My Profile Screen
+
+
+![userprofile](https://user-images.githubusercontent.com/99785438/162830817-b67756de-7493-4d28-8990-41bccff7bc26.jpg)
+
  ## About Screen
   
+  ![about](https://user-images.githubusercontent.com/99785438/162833266-68c6d69d-9520-40e6-a289-e2861d213adb.jpg)
+
 # App Architecture
 The overall architecture of PopcornTime is based on the [Container and Presentational Pattern.](https://www.google.ca/books/edition/React_Design_Patterns_and_Best_Practices/kc6PDwAAQBAJ?hl=en&gbpv=1&dq=react%20container%20and%20presentational&pg=PA95&printsec=frontcover) It splits the code according into two parts - 
 1. **Container:** the logic layer of the application
@@ -174,6 +211,7 @@ Features not implemented in current version (v0.1) but planned for later version
  - **Create Multiple Lists**: A user can create their own custom lists.
  - **Share Lists:** A user can collaborate with friends on lists to make plans together.
 ## Tech Stack
+
 The tech stack used for implementation of PopcornTime is described briefly in the following section:
 |Technology|Description|
 |--|--|
@@ -222,7 +260,6 @@ The following open-source packages were used in development of PopcornTime:
 
 
 
-![logoutGif](https://user-images.githubusercontent.com/99785438/162812854-02a18e33-bab6-4689-9b2c-4b012e04e214.gif)
 
 
 
