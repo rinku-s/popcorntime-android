@@ -4,10 +4,9 @@
 - Features
 - Getting Started
 	 - Pre-requisites
-	- Get API Key
-	- Installation Instructions
+	 - Installation Instructions
+	 - Get API Key
 - App Preview
-	- Video Preview
 	- Register Screen
 	- Login Screen
 	- Home Screen
@@ -19,16 +18,16 @@
 	- My Profile Screen
 	- About Screen
 
-- Tech Stack
+- App Architecture
 - Folder Structure
-- What's Included
 - Known Bugs
+- Tech Stack
 - Contribution
 - License Information
 - Credit and Acknowledgement
 - Future Updates
 
-# :popcorn:PopcornTime 
+# PopcornTime 
 
   ![tv](https://user-images.githubusercontent.com/99785438/162727728-649748d6-cf8a-437f-a9de-f545c9d59c70.png)
 
@@ -37,7 +36,7 @@
 
 It provide a user-friendly, intuitive interface to its users to manage their catalog of movies. A user can start by registering for a profile or an account in the app. It provides a seamless experience in terms of application usage to browse through the list of movies sorted by popularity and view details about the movie such as the plot summary, runtime and release year of the movie. A user can organize the movies into Favorites and Watchlist. It also allows the users to view similar titles below for the movie that they are interested in.
 
-# :fallen_leaf:Features
+# Features
   
  -  **Create Account:** The user will create an account and log in to the account.
  -  **Search Title:** The user will use the search bar to search for any movie or tv show.
@@ -233,7 +232,7 @@ GitHub: [@rinku-s](https://github.com/rinku-s)
 This software is freely distributable under the MIT License. Please see License.md for more information.
 
 
-#  📜 Credits and Acknowledgement
+#  Credits and Acknowledgement
 The following open-source packages were used in development of PopcornTime:
 
  - [@react-navigation/native](https://www.npmjs.com/package/@react-navigation/native)
@@ -248,7 +247,7 @@ The following open-source packages were used in development of PopcornTime:
 > [shields](https://shields.io/) - Badges in README file.
 
 > [emojis cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) - Emojis used in README file.
-# :bookmark_tabs:Further Reading
+# Further Reading
 
  - [About Presentation and Container Pattern](https://blog.bitsrc.io/implementing-the-container-pattern-using-react-hooks-f490a8492d05).
  - [About creating REST APIs using Django REST Framework](https://stackabuse.com/creating-a-rest-api-with-django-rest-framework/).
