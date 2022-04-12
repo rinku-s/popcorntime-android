@@ -21,11 +21,12 @@
 - App Architecture
 - Folder Structure
 - Known Bugs
+- Future Updates
 - Tech Stack
 - Contribution
 - License Information
 - Credit and Acknowledgement
-- Future Updates
+- Further Reading
 
 # PopcornTime 
 
