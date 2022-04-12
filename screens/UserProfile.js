@@ -6,30 +6,14 @@
  *  last-modified: apr-10-2022
  */
 
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  Pressable,
-} from 'react-native';
-import { TouchableOpacity as TouchableOpacityRNGH } from 'react-native-gesture-handler';
-import homestyle from '../styles/HomeStyle';
+import {ToastAndroid,} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import UserProfileUI from '../presentation/UserProfileUI'
 
-  /**
+/**
        * UserProfile
        * Purpose: Define the container for the user menu screen of the app.
 ``*/
@@ -43,7 +27,7 @@ const UserProfile = ({ navigation }) => {
    * Parameter(s):
    * <1> navigation: the navigation prop that is passed to all the screens in the navigation stack.
    * <2> isFocused must be defined and initialized.
-   * 
+   *
    * Precondition(s):
    * <1> navigation stack must be defined and initialized containing paths for both the screens involved in navigation in the stack. Navigation prop must be passed to the main function.
    * <3>  getUserDetails function must be defined and initialized.
@@ -73,7 +57,7 @@ const UserProfile = ({ navigation }) => {
    * Side effect:
    * <1> If the user clicks on the any of the options on the menu, this function navigates the user to the screen passed as parameter.
    * <2> else, do nothing.
-   */ 
+   */
   const navigateToScreen = (screen) => {
      navigation.navigate(screen)
   }
@@ -83,7 +67,7 @@ const UserProfile = ({ navigation }) => {
    * logout
    * Purpose: This function logs the user out of their account and navigates them back to login screen.
    * Parameter(s):   N/A
-   * 
+   *
    * Precondition(s): N/A
    *
    * Returns: N/A
@@ -91,7 +75,7 @@ const UserProfile = ({ navigation }) => {
    * Side effect:
    * <1> If the user clicks on the any of the options on the menu, this function clears userId in async storage and navigates them back to login screen.
    * <2> else, do nothing.
-   */ 
+   */
 const logout = ()  => {
   setUserId(0)
   navigation.navigate("Login")

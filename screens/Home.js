@@ -6,34 +6,18 @@
  *  last-modified: apr-10-2022
  */
 
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-} from 'react-native';
-
-import { TouchableOpacity as TouchableOpacityRNGH } from 'react-native-gesture-handler';
-import homestyle from '../styles/HomeStyle';
+import {Platform, ToastAndroid,} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import Constants from 'expo-constants';
-import { Colors } from '../helpers/Colors';
-import { RiSearchFill } from 'react-icons/fa';
+import {Colors} from '../helpers/Colors';
 import HomeUI from '../presentation/HomeUI';
 import ProfileIconUI from '../presentation/ProfileIconUI';
 import AppIconUI from '../presentation/AppIconUI';
-  /**
+
+/**
        * Home
        * Purpose: Define the container for the home screen of the app.
 ``*/
@@ -48,7 +32,7 @@ const Home = ({ navigation }) => {
   const [userId, setUserId] = useState('');
   const [resultCount, setResultCount] = useState(0);
   const [url, setUrl] = useState('http://172.16.1.87:8000/movies/?format=json&page=');
-  
+
   /**
    * useEffect
    * Purpose: this hook runs every time the screen is rendered. When the user navigates to the Home page of the app, then call a function to get movie details by API calls to be displayed on the page.
@@ -56,7 +40,7 @@ const Home = ({ navigation }) => {
    * Parameter(s):
    * <1> navigation: the navigation prop that is passed to all the screens in the navigation stack.
    * <2> isFocused must be defined and initialized.
-   * 
+   *
    * Precondition(s):
    * <1> navigation stack must be defined and initialized containing paths for both the screens involved in navigation in the stack. Navigation prop must be passed to the main function.
    * <3>  getMoviesDataFromAPI function must be defined and initialized.
@@ -66,7 +50,7 @@ const Home = ({ navigation }) => {
    * <1> if navigation value is changed i.e. each time the screen is rendered, useEffect sets userName and password fields to empty strings which resets the value of their respective text inputs.
    * <2> else, do nothing
    */
-  React.useEffect(() => 
+  React.useEffect(() =>
   getMoviesDataFromAPI(url), []);
   React.useEffect(() => {
     AsyncStorage.getItem('userIdKey').then((value) => {

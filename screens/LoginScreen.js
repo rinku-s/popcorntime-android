@@ -6,32 +6,14 @@
  *  last-modified: apr-10-2022
  */
 
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  Dimensions,
-  KeyboardAvoidingView,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import {Keyboard,} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Header } from '@react-navigation/native';
-import loginstyle from '../styles/LoginStyle';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import LoginScreenUI from '../presentation/LoginScreenUI';
-  /**
+
+/**
        * LoginScreen
        * Purpose: Define the container for the login screen of the app.
 ``*/
@@ -101,11 +83,11 @@ const LoginScreen = ({ navigation }) => {
    *
    * Side effect:
    * <1> if the username and password entered are both correct, then the api will check if the username exists in the database. If yes, it will compare fetch and unencrypt the password from the database and compare it with the input given by the user. If yes, then it will return the user id from the database and go to the homepage of the app.
-   * <2> else if the username or password entered is incorrect, an alert will be displayed with the same message. 
+   * <2> else if the username or password entered is incorrect, an alert will be displayed with the same message.
    * <3> else if the username does not exist in the database, an alert will be displayed with the same message suggesting the user to register first.
    * <4> else if the user does not enter values in username and/or password, an alert will be displayed for the same.
    * <5> else, do nothing.
-   * 
+   *
    */
   const loginAPI = (userName, passWord) => {
     setLoading(true);
@@ -113,7 +95,7 @@ const LoginScreen = ({ navigation }) => {
     Keyboard.dismiss;
     console.log('Inside login API with ', userName, ' ', password);
     if(!userName && !passWord)
-      alert("Please enter a username and password ")  
+      alert("Please enter a username and password ")
       else if(!userName)
       alert("Please enter a username")
     else if (!passWord)

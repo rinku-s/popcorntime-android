@@ -5,31 +5,12 @@
  *  date-created: mar-25-2022
  *  last-modified: apr-10-2022
  */
-import React, { useState, useEffect } from 'react';
-
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  Pressable,
-  ScrollView,
-} from 'react-native';
-import { TouchableOpacity as TouchableOpacityRNGH } from 'react-native-gesture-handler';
-import homestyle from '../styles/HomeStyle';
+import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
-import searchscreenstyle from '../styles/SearchScreenStyle';
+import {useIsFocused} from '@react-navigation/native';
 import FavoritesUI from '../presentation/FavoritesUI'
-  /**
+
+/**
        * FavoritesList
        * Purpose: Define the container for the favorites screen of the app.
 ``*/
@@ -105,7 +86,7 @@ const FavoritesList = ({ navigation }) => {
    *
    * Side effect:
    * <1> if navigation value is changed i.e. each time the screen is rendered, useEffect calls getFavesList function that fetches all movies in a user's watchlist. getMovieDetailsById is called for each movie in the watchlist to fetch details about the movie.
-   * 
+   *
    * <2> else, show error
    */
   const getFavesList = async (user_id) => {
@@ -152,8 +133,8 @@ const FavoritesList = ({ navigation }) => {
    * <1> if movie details for the movie id exist, then fetch the details and store in a list.
    * <2> else, show error
    */
-  
-  const getMovieDetailsById = async (movie_id) => {  
+
+  const getMovieDetailsById = async (movie_id) => {
     console.log('Inside getMovieDetailsById : ' + movie_id);
     setLoading(true);
     await fetch('http://172.16.1.87:8000/api/movies/' + movie_id)

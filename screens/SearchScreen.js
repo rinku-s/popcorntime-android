@@ -6,29 +6,11 @@
  *  last-modified: apr-10-2022
  */
 
-import React, { useState, useEffect } from 'react';
-
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  Dimensions,
-} from 'react-native';
-
-import searchscreenstyle from '../styles/SearchScreenStyle';
+import React, {useEffect, useState} from 'react';
 import SearchUI from '../presentation/SearchUI';
 
 
-  /**
+/**
        * SearchScreen
        * Purpose: Defines the container for the search screen of the app.
 ``*/

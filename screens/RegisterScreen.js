@@ -5,34 +5,12 @@
  *  date-created: mar-25-2022
  *  last-modified: apr-10-2022
  */
-import React, { useState, useEffect } from 'react';
+import React, {useState} from 'react';
 
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  Dimensions,
-  KeyboardAvoidingView,
-  Keyboard,
-  TouchableWithoutFeedback,
-} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
-import { Header } from '@react-navigation/native';
-import loginstyle from '../styles/LoginStyle';
-import DatePicker from 'react-native-datepicker';
+import {Keyboard, ToastAndroid,} from 'react-native';
 import RegisterUI from '../presentation/RegisterUI';
 
-  /**
+/**
        * RegisterScreen
        * Purpose: Define the container for the register screen of the app.
 ``*/
@@ -44,7 +22,7 @@ const RegisterScreen = ({ navigation }) => {
   const [birthDate, setBirthDate] = useState(new Date());
   const [response, setResponse] = useState('');
   const [open, setOpen] = useState(false)
-  
+
    /**
    * registerAPI
    * Purpose: This function takes user input for all four parameters mentioned below and creates a user account if there are no erors

@@ -5,38 +5,16 @@
  *  date-created: mar-25-2022
  *  last-modified: apr-10-2022
  */
-import React, { useState, useEffect } from 'react';
-import { getMovieDetailById } from './FavoritesList';
+import React, {useState} from 'react';
 //import GlobalFunc from '../helpers/globalFunc';
-
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-  ImageBackground,
-  ScrollView,
-} from 'react-native';
-import searchscreenstyle from '../styles/SearchScreenStyle';
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-import detailsstyle from '../styles/DetailsStyle';
+import {Image, ToastAndroid, TouchableOpacity,} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import homestyle from '../styles/HomeStyle';
-import FavoritesList from './FavoritesList';
 import DetailsUI from '../presentation/DetailsUI';
 import Constants from 'expo-constants';
-import { Colors } from '../helpers/Colors';
-import ProfileIconUI from '../presentation/ProfileIconUI';
+import {Colors} from '../helpers/Colors';
+
 /**
        * Details
        * Purpose: Define the container for the details screen of the app.
@@ -301,7 +279,7 @@ function Details({ navigation, route }) {
    * <1> If the user adds the movie in the favorites lists then make a POST call to the API.
    * <2> else if the movie already exists as a favorite and the user unfavorites it, make a DELETE call to the API
    * <3> else,show error
-   * 
+   *
    */
 
   const addToFaveListAPI = (userId, movieId, faveListState) => {
@@ -360,7 +338,7 @@ function Details({ navigation, route }) {
    * <1> If the user adds the movie in the watchlist lists then make a POST call to the API.
    * <2> else if the movie already exists in watchlist and the user unclicks it, make a DELETE call to the API
    * <3> else,show error
-   * 
+   *
    */
   const addToWatchListAPI = (userId, movieId, watchListState) => {
     setLoading(true);
@@ -418,7 +396,7 @@ function Details({ navigation, route }) {
    * <1> If the user has already added the movie in the favorites list then set favorites icon color as red the API.
    * <2> else set favorites icon color as dark.
    * <3> else,show error
-   * 
+   *
    */
   const checkFaveList = (userId, movieId) => {
     //console.log('Inside checkfavelist ' + userId + ' ' + movieId);
@@ -462,7 +440,7 @@ function Details({ navigation, route }) {
    * <1> If the user has already added the movie in the watchlist then set watchlist icon color as yellow the API.
    * <2> else set watchlist icon color as dark.
    * <3> else,show error
-   * 
+   *
    */
   const checkWatchList = (userId, movieId) => {
     //console.log('Inside checkwatchlist ' + userId + ' ' + movieId);
@@ -502,7 +480,7 @@ function Details({ navigation, route }) {
    * Side effect:
    * <1> If the user clicks on the favorites icon once, set it as red
    * <2> else set favorites icon color as dark.
-   * 
+   *
    */
   const addToFaveList = (faveListState) => {
     if (faveListState == 'black' || faveListState == '') {
@@ -526,7 +504,7 @@ function Details({ navigation, route }) {
    * Side effect:
    * <1> If the user clicks on the watchlist icon once, set it as red
    * <2> else set watchlist icon color as dark.
-   * 
+   *
    */
   const addToWatchList = (watchListState) => {
     if (watchListState == 'black' || watchListState == '') {

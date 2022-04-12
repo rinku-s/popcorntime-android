@@ -1,34 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StyleSheet,
-  FlatList,
-/*
- *  file: UserDetails.js
- *  author: Rinku Ansari <raf122@uregina.ca>
- *  version: 0.1
- *  date-created: mar-25-2022
- *  last-modified: apr-10-2022
- */
-  ActivityIndicator,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  ToastAndroid,
-  Platform,
-  Button,
-} from 'react-native';
-import { TouchableOpacity as TouchableOpacityRNGH } from 'react-native-gesture-handler';
-import homestyle from '../styles/HomeStyle';
+import React, {useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useIsFocused } from '@react-navigation/native';
+import {useIsFocused} from '@react-navigation/native';
 import UserDetailsUI from '../presentation/UserDetailsUI';
 
 
-  /**
+/**
        * UserDetails
        * Purpose: Define the container for the user profile screen of the app.
 ``*/
@@ -47,7 +23,7 @@ const isFocused = useIsFocused
    * Parameter(s):
    * <1> navigation: the navigation prop that is passed to all the screens in the navigation stack.
    * <2> isFocused must be defined and initialized.
-   * 
+   *
    * Precondition(s):
    * <1> navigation stack must be defined and initialized containing paths for both the screens involved in navigation in the stack. Navigation prop must be passed to the main function.
    * <3>  getUserDetails function must be defined and initialized.
@@ -72,9 +48,9 @@ React.useEffect(()=>{
    *
    * Parameter(s):
    * <1> userId: user id of the user fetched from async storage
-   * 
+   *
    * Precondition(s): N/A
-   * 
+   *
    * Returns: N/A
    *
    * Side effect:
