@@ -1,10 +1,13 @@
-// Example of Infinite Loading Listview in React Native using FlatList
-// https://aboutreact.com/infinite-list-view/
+/*
+ *  file: SearchScreen.js
+ *  author: Rinku Ansari <raf122@uregina.ca>
+ *  version: 0.1
+ *  date-created: mar-25-2022
+ *  last-modified: apr-10-2022
+ */
 
-// import React in our code
 import React, { useState, useEffect } from 'react';
 
-// import all the components we are going to use
 import {
   SafeAreaView,
   View,
@@ -22,7 +25,13 @@ import {
 } from 'react-native';
 
 import searchscreenstyle from '../styles/SearchScreenStyle';
+import SearchUI from '../presentation/SearchUI';
 
+
+  /**
+       * SearchScreen
+       * Purpose: Defines the container for the search screen of the app.
+``*/
 function SearchScreen({ navigation, route }) {
   const { searchStr } = route.params;
   const [loading, setLoading] = useState(false);
@@ -37,34 +46,45 @@ function SearchScreen({ navigation, route }) {
 
   const [count, setCount] = useState(1);
 
-  useEffect(() => {
-    if (resultCount > 25) {
-      console.log('Count is more that 25');
-    } else {
-      console.log('Count is less that 5');
-    }
-  }, [resultCount]);
-
+  /**
+   * navigateToScreen
+   * Purpose: This function allows navigation from Details screen to any screen according to  the parameters.
+   * Parameter(s):
+   * <1> screen: The props for screen name to be called.
+   * <2> item: The props for the item to be passed as props.
+   * Precondition(s):N/A
+   *
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> If the user clicks on the any of the movies in the recommendations list, this function navigates the user to the screen passed as parameter.
+   * <2> else, do nothing.
+   */
   const navigateToScreen = (item) => {
     navigation.navigate('Details', {
       item,
     });
   };
 
+   /**
+   * getData
+   * Purpose: This function fetches the list of all movies that match the search string entered by user
+   * Parameter(s): N/A
+   *
+   * Precondition(s):
+   * <1> loading, isListEnd, dataSource, and url are defined and initialized.
+   *
+   * Returns: N/A
+   *
+   * Side effect:
+   * <2> Fetches the list of all movies that match the search string entered by user
+   */
   const getData = () => {
-    // console.log(page);
     if (!loading && !isListEnd) {
-      console.log(
-        'getData from search' +
-          'http://172.16.1.87:8000/api/movies/?format=json&title=' +
-          searchStr +
-          '&page=' +
-          page
-      );
       setLoading(true);
       fetch(
         'http://172.16.1.87:8000/api/movies/?format=json&title=' +
-          searchStr +
+          searchStr.trim() +
           '&page=' +
           page
       )
@@ -88,81 +108,15 @@ function SearchScreen({ navigation, route }) {
     }
   };
 
-  const renderFooter = () => {
-    return (
-      // Footer View with Loader
-      <View style={searchscreenstyle.footer}>
-        {loading ? (
-          <ActivityIndicator color="black" style={{ margin: 15 }} />
-        ) : null}
-      </View>
-    );
-  };
-
-  const ItemView = ({ item }) => {
-    return (
-      <TouchableOpacity
-        style={searchscreenstyle.GridViewContainer}
-        onPress={() => navigateToScreen(item)}>
-        <Image
-          style={{ alignSelf: 'stretch', flex: 1, height: 100 }}
-          source={{
-            uri: 'https://image.tmdb.org/t/p/original' + item.poster_path,
-          }}
-        />
-        <Text
-          style={{
-            position: 'absolute',
-            justifyContent: 'flex-end',
-            bottom: 0,
-            textAlign: 'center',
-            paddingBottom: 5,
-            color: 'white',
-            adjustsFontSizeToFit: true,
-            textBreakStrategy: 'simple',
-            numberOfLines: 3,
-            ellipsizeMode: 'tail',
-            //   fontFamily: 'Times New Roman',
-            textShadowColor: 'black',
-            textShadowOffset: { width: 5, height: 5 },
-            textShadowRadius: 20,
-          }}>
-          {item.title}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  const ItemSeparatorView = () => {
-    return (
-      <View
-        style={{
-          height: 0.5,
-          width: '100%',
-          backgroundColor: '#C8C8C8',
-        }}
-      />
-    );
-  };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <Text style={searchscreenstyle.searchResultText}>
-        {' '}
-        Search Results for "{searchStr}"{' '}
-      </Text>
-      <FlatList
-        style={{ flex: 0.9, backgroundColor: 'yellow' }}
-        data={dataSource}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={ItemSeparatorView}
-        renderItem={ItemView}
-        ListFooterComponent={renderFooter}
-        // onEndReached={getData}
-        onEndReached={resultCount > 24 ? getData : null}
-        onEndReachedThreshold={0.5}
-        numColumns={3}
-      />
-    </SafeAreaView>
+    <SearchUI
+      searchStr={searchStr}
+      dataSource={dataSource}
+      resultCount={resultCount}
+      getData={getData}
+      loading={loading}
+      navigateToScreen={navigateToScreen}
+    />
   );
 }
 

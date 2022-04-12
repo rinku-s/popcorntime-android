@@ -1,10 +1,13 @@
-// Example of Infinite Loading Listview in React Native using FlatList
-// https://aboutreact.com/infinite-list-view/
+/*
+ *  file: Home.js
+ *  author: Rinku Ansari <raf122@uregina.ca>
+ *  version: 0.1
+ *  date-created: mar-25-2022
+ *  last-modified: apr-10-2022
+ */
 
-// import React in our code
 import React, { useState, useEffect } from 'react';
 
-// import all the components we are going to use
 import {
   SafeAreaView,
   View,
@@ -19,10 +22,21 @@ import {
   Platform,
   Button,
 } from 'react-native';
+
 import { TouchableOpacity as TouchableOpacityRNGH } from 'react-native-gesture-handler';
 import homestyle from '../styles/HomeStyle';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
+import Constants from 'expo-constants';
+import { Colors } from '../helpers/Colors';
 import { RiSearchFill } from 'react-icons/fa';
+import HomeUI from '../presentation/HomeUI';
+import ProfileIconUI from '../presentation/ProfileIconUI';
+import AppIconUI from '../presentation/AppIconUI';
+  /**
+       * Home
+       * Purpose: Define the container for the home screen of the app.
+``*/
 const Home = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
@@ -30,30 +44,116 @@ const Home = ({ navigation }) => {
   const [isListEnd, setIsListEnd] = useState(false);
   const [searchString, setsearchString] = useState('');
   const [likeState, setLikeState] = useState('white');
+  const isFocused = useIsFocused();
+  const [userId, setUserId] = useState('');
+  const [resultCount, setResultCount] = useState(0);
+  const [url, setUrl] = useState('http://172.16.1.87:8000/movies/?format=json&page=');
+  
+  /**
+   * useEffect
+   * Purpose: this hook runs every time the screen is rendered. When the user navigates to the Home page of the app, then call a function to get movie details by API calls to be displayed on the page.
+   *
+   * Parameter(s):
+   * <1> navigation: the navigation prop that is passed to all the screens in the navigation stack.
+   * <2> isFocused must be defined and initialized.
+   * 
+   * Precondition(s):
+   * <1> navigation stack must be defined and initialized containing paths for both the screens involved in navigation in the stack. Navigation prop must be passed to the main function.
+   * <3>  getMoviesDataFromAPI function must be defined and initialized.
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> if navigation value is changed i.e. each time the screen is rendered, useEffect sets userName and password fields to empty strings which resets the value of their respective text inputs.
+   * <2> else, do nothing
+   */
+  React.useEffect(() => 
+  getMoviesDataFromAPI(url), []);
+  React.useEffect(() => {
+    AsyncStorage.getItem('userIdKey').then((value) => {
+      setUserId(value);
+    });
+  }, [navigation, isFocused]);
 
-  useEffect(() => getMoviesDataFromAPI(url), []);
-  const [url, setUrl] = useState(
-    'http://172.16.1.87:8000/movies/?format=json&page='
-  );
+  /**
+   * useLayoutEffect
+   * Purpose: this hook defines the header for this page including app icon displayed at the left and the profile icon at the right in the header on render.
+   *
+   * Parameter(s):
+   * <1> navigation: the navigation prop that is passed to all the screens in the navigation stack.
+   *
+   * Precondition(s):
+   * <1> navigation stack must be defined and initialized containing paths for both the screens involved in navigation in the stack. Navigation parameter must be passed to the main function.
+   * <2> colors are defined and iniatialized.
+   * <3> AppUIIcon must be defined and imported.
+   * <4> navigateToScreen function must be defined and initialized.
+   * <5> ProfileIconUI must be defined and imported.
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> if navigation changes, then customize the app bar or header to display profile icon on the right and the icon of the app on the left.
+   * <2> When the profile icon is clicked go to User Menu screen.
+   * <3> else, do nothing
+   */
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: true,
+      headerLeft: () => (
+        <AppIconUI/>
+    ),
+      headerTitleAlign: 'left',
+      headerRight: () => (
+        <ProfileIconUI navigateToScreen={navigateToScreen} />
+      ),
+      headerStyle: {
+        backgroundColor: Colors.primaryVariant,
+        paddingTop: Constants.statusBarHeight,
+        paddingLeft: 15,
+      },
+      headerTintColor: Colors.backgroundColor,
+    });
+  }, [navigation]);
 
-  const likeAPI = () => {
-    setLikeState('red');
-    ToastAndroid.show('Like?' + likeState, ToastAndroid.SHORT);
-  };
 
-  const whichTab = (tabName) => {
-    if (tabName == 'moviesTab') {
-      ToastAndroid.show('MoviesTab', ToastAndroid.SHORT);
-    } else if (tabName == 'tvTab') {
-      ToastAndroid.show('TvTab', ToastAndroid.SHORT);
-    }
-  };
+   /**
+   * navigateToScreen
+   * Purpose: This function allows navigation from Home screen to any other screen according to  the parameters.
+   * Parameter(s):
+   * <1> screen: The name of the screen to navigate to.
+   * <2> item: The props to pass to the screen being called.
+   *
+   * Precondition(s):
+   * <1> N/A
+   *
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> If the user clicks on the any of the movies displayed, this function navigates the user to the details screen for that movie.
+   * <2> Else if the user clicks on the search icon, this function navigates the user to the search screen for the search string entered.
+   * <2> else, do nothing.
+   */
   const navigateToScreen = (screen, item) => {
     navigation.navigate(screen, {
       item,
     });
   };
 
+   /**
+   * getMoviesDataFromAPI
+   * Purpose: This function fetches the list of all movies from the database ordered by popularity parameter and stores the response in dataSource variable which is fed to Flatlist for display.
+   * Parameter(s):
+   * <1> url: The url of the api for movies data..
+   * <2> item: The props to pass to the screen being called.
+   *
+   * Precondition(s):
+   * <1> loading, isListEnd, dataSource, and url are defined and initialized.
+   *
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> If the navigation moves to home screen, this function fetches the data for all movies in the database page by page. Each page has been configured to have 24 movies on the api side and the data is fetched until the last page is reached. This data is stored in the dataSource variable.
+   * <2> Else if the user clicks on the search icon, this function navigates the user to the search screen for the search string entered.
+   * <2> else, do nothing.
+   */
   const getMoviesDataFromAPI = (url) => {
     //console.log(page);
     if (!loading && !isListEnd) {
@@ -66,9 +166,11 @@ const Home = ({ navigation }) => {
         .then((responseJson) => {
           // Successful response from the API Call
           console.log(responseJson);
+          setResultCount(responseJson.count);
           if (responseJson.results.length > 0) {
             setPage(page + 1);
             // After the response increasing the page
+            console.log(responseJson);
             setDataSource([...dataSource, ...responseJson.results]);
             setLoading(false);
           } else {
@@ -82,133 +184,46 @@ const Home = ({ navigation }) => {
     }
   };
 
-  const renderFooter = () => {
-    return (
-      <View style={homestyle.footer}>
-        {loading ? (
-          <ActivityIndicator color="black" style={{ margin: 15 }} />
-        ) : null}
-      </View>
-    );
-  };
-
-  const ItemView = ({ item }) => {
-    return (
-      <TouchableOpacity
-        style={homestyle.GridViewContainer}
-        onPress={() => navigateToScreen('Details', item)}>
-        <Image
-          style={{ alignSelf: 'stretch', flex: 1, height: 100 }}
-          source={{
-            uri: 'https://image.tmdb.org/t/p/original' + item.poster_path,
-          }}
-        />
-        <TouchableOpacityRNGH style={homestyle.LikeButton}>
-          <Image
-            source={require('../assets/like-icon.png')}
-            resizeMode="contain"
-            onPress={setLikeState('red')}
-            style={homestyle.logo}
-          />
-        </TouchableOpacityRNGH>
-        <Text
-          style={{
-            position: 'absolute',
-            justifyContent: 'flex-end',
-            bottom: 0,
-            textAlign: 'center',
-            paddingBottom: 5,
-            color: 'white',
-            adjustsFontSizeToFit: true,
-            textBreakStrategy: 'simple',
-            numberOfLines: 3,
-            ellipsizeMode: 'tail',
-            //   fontFamily: 'Times New Roman',
-            textShadowColor: 'black',
-            textShadowOffset: { width: 5, height: 5 },
-            textShadowRadius: 20,
-          }}>
-          {item.title}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
-
-  const ItemSeparatorView = () => {
-    return (
-      // Flat List Item Separator
-      <View
-        style={{
-          height: 0.5,
-          width: '100%',
-          backgroundColor: '#C8C8C8',
-        }}
-      />
-    );
-  };
-
+   /**
+   * searchAPI
+   * Purpose: This function takes the user input in the search text input box and navigates the user to the search screen for that string.
+   * Parameter(s):
+   * <1> userInput: The search string entered by user.
+   *
+   * Precondition(s):
+   * <1> userInput, and navigation are defined and initialized.
+   *
+   * Returns: N/A
+   *
+   * Side effect:
+   * <1> If the user enters data in the search text box and then clicks on the search button then searchAPI will navigate the user to the search screen with the search string passed as a prop.
+   * <2> Else if the user clicks on the search button and no data is present in the search text input, this function displays a message to prompt the user to give input for search.
+   * <2> else, do nothing.
+   */
   const searchAPI = (userInput) => {
     if (userInput != '') {
       if (Platform.OS === 'android')
         // ToastAndroid.show(userInput, ToastAndroid.SHORT);
-        ToastAndroid.show(userInput, ToastAndroid.SHORT);
+       // ToastAndroid.show(userInput, ToastAndroid.SHORT);
       navigation.navigate('SearchScreen', {
         searchStr: userInput,
       });
     } else if (Platform.OS === 'android') {
-      ToastAndroid.show('Please enter a title ', ToastAndroid.SHORT);
+      ToastAndroid.show('Please enter a movie name', ToastAndroid.SHORT);
     }
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={{ flex: 0.1, flexDirection: 'row', marginBottom: 0.02 }}>
-        <TextInput
-          style={homestyle.TextInputStyle}
-          onSubmitEditing={(event) => searchAPI(event.nativeEvent.text)}
-          onChangeText={(text) => setsearchString(text)} //searchFilterFunction(text)
-          value={searchString}
-          clearButtonMode="always"
-          underlineColorAndroid="transparent"
-          placeholder="Search PopcornTime"
-        />
-        <TouchableOpacity
-          style={homestyle.SearchButton}
-          onPress={() => searchAPI(searchString)}>
-          <Image
-            source={require('../assets/search-icon.png')}
-            resizeMode="contain"
-            style={homestyle.logo}
-          />
-        </TouchableOpacity>
-      </View>
-
-      <View
-        style={{ flex: 0.08, flexDirection: 'row', backgroundColor: 'white' }}>
-        <TouchableOpacity
-          style={homestyle.TabLayout}
-          onPress={() => whichTab('moviesTab')}>
-          <Text>Movies</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={homestyle.TabLayout}
-          onPress={() => whichTab('tvTab')}>
-          <Text>TV Shows</Text>
-        </TouchableOpacity>
-      </View>
-
-      <FlatList
-        style={{ flex: 0.9 }}
-        data={dataSource}
-        keyExtractor={(item, index) => index.toString()}
-        ItemSeparatorComponent={ItemSeparatorView}
-        renderItem={ItemView}
-        ListFooterComponent={renderFooter}
-        onEndReached={getMoviesDataFromAPI(url)}
-        onEndReachedThreshold={0.5}
-        numColumns={3}
-      />
-    </SafeAreaView>
+    <HomeUI
+      dataSource={dataSource}
+      searchString={searchString}
+      setsearchString={setsearchString}
+      searchAPI={searchAPI}
+      resultCount={resultCount}
+      getMoviesDataFromAPI={getMoviesDataFromAPI}
+      url={url}
+      loading={loading}
+      navigateToScreen={navigateToScreen}></HomeUI>
   );
 };
 
