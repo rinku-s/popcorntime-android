@@ -1,4 +1,4 @@
-:book: # Table of Contents
+# :book: Table of Contents
 
 - About the Project
 - Features
@@ -28,8 +28,7 @@
 - Credit and Acknowledgement
 - Further Reading
 
-:popcorn: # PopcornTime 
-
+# :popcorn: PopcornTime  
   ![tv](https://user-images.githubusercontent.com/99785438/162727728-649748d6-cf8a-437f-a9de-f545c9d59c70.png)
 
 
@@ -37,7 +36,7 @@
 
 It provide a user-friendly, intuitive interface to its users to manage their catalog of movies. A user can start by registering for a profile or an account in the app. It provides a seamless experience in terms of application usage to browse through the list of movies sorted by popularity and view details about the movie such as the plot summary, runtime and release year of the movie. A user can organize the movies into Favorites and Watchlist. It also allows the users to view similar titles below for the movie that they are interested in.
 
-:envelope: # Features
+# :sun_with_face: Features
   
  -  **Create Account:** The user will create an account and log in to the account.
  -  **Search Title:** The user will use the search bar to search for any movie or tv show.
@@ -45,33 +44,31 @@ It provide a user-friendly, intuitive interface to its users to manage their cat
  -  **Add to Lists:** The user can add a title to a list to watch later or mark it as a favorite.
  -  **View Recommendations:** The user will be shown recommended titles for a selected title.
 
-:capital_abcd: # Getting Started
+# :auto_rickshaw: Getting Started
   
-:ab: ### Pre-requisites
+### :capital_abcd: Pre-requisites
 The app is developed and tested for Android 11 or iOS 15 and higher versions of the mobile Operating Systems.
-
-:page_facing_up: ### Installation Instructions
+### :hammer_and_wrench: Installation Instructions
 1.  Install the latest Node
 2.  Install  [Expo](https://expo.io/)  -  `npm install expo-cli --global`
 3.  Clone the repo 
-	```
-	git clone https://github.com/rinku-s/popcorntime-android
-	```
+```
+git clone https://github.com/rinku-s/popcorntime-android
+```
 4.  `cd`  into this project directory
 5.  Install the dependencies by running `npm install`  or  `yarn install`
 6.  Run  `expo start`
 
-:old_key: ### Get API Key from TMDB
+### :old_key: Get API Key from TMDB
 TMDB has more than 700,000 movies in its database. to access movies data for free, create an account on TMDB to [generate a unique API key](https://developers.themoviedb.org/3/getting-started/authentication). It is free to use provided it is **cited** as the source when used.
 
   
-:movie_camera: # App Preview
-:memo:
-:pencil: ## Register Screen
+# :movie_camera: App Preview
+## :memo: Register Screen
  
 ![register](https://user-images.githubusercontent.com/99785438/162828499-a4cc753b-15d8-4947-a063-32f6c7a1b33b.gif)
 
- :pencil2: ## Login Screen
+## :pencil2: Login Screen
  
  Login
  
@@ -81,44 +78,44 @@ TMDB has more than 700,000 movies in its database. to access movies data for fre
  
 ![logoutGif](https://user-images.githubusercontent.com/99785438/162812854-02a18e33-bab6-4689-9b2c-4b012e04e214.gif)
 
-## Home Screen
+## :house: Home Screen
  
  
 ![homepage](https://user-images.githubusercontent.com/99785438/162829973-a2ec561a-d7eb-4521-9474-cc6cdb703caa.jpg)
 
- ## Search Screen
+ ## :mag: Search Screen
 
 ![searchscreen](https://user-images.githubusercontent.com/99785438/162830736-31653b48-72d7-46c5-81a2-0a5d5a5eedcf.jpg)
 
- ## Details Screen
+ ## :detective: Details Screen
  
   ![viewrec](https://user-images.githubusercontent.com/99785438/162819035-627d4f63-8a91-4476-9f6e-e3a94bce95d6.gif)
 
- ## Favorites Screen
+ ## :heart: Favorites Screen
 
   ![fav](https://user-images.githubusercontent.com/99785438/162819118-966a53ad-dec6-44e5-a765-73246904d5de.gif)
 
- ## Watchlist
+ ## :label: Watchlist
  
 ![watchlist-1](https://user-images.githubusercontent.com/99785438/162835277-b10539fb-4e8d-473a-b9a9-898f5c980fbe.jpg)
 
  ![watchlist](https://user-images.githubusercontent.com/99785438/162834607-5389d5d3-f282-4efc-81e2-3ee6094be3c7.jpg)
  
- ## User Menu Screen
+ ## :plate_with_cutlery: User Menu Screen
  
 ![usermenu](https://user-images.githubusercontent.com/99785438/162830789-a4f4d0a1-596d-436f-a834-0db9fb111114.jpg)
 
- ## My Profile Screen
+ ## :bust_in_silhouette: My Profile Screen
 
 
 ![userprofile](https://user-images.githubusercontent.com/99785438/162830817-b67756de-7493-4d28-8990-41bccff7bc26.jpg)
 
- ## About Screen
+ ## :deciduous_tree: About Screen
   
   ![about](https://user-images.githubusercontent.com/99785438/162833266-68c6d69d-9520-40e6-a289-e2861d213adb.jpg)
 
-# App Architecture
-The overall architecture of PopcornTime is based on the [Container and Presentational Pattern.](https://www.google.ca/books/edition/React_Design_Patterns_and_Best_Practices/kc6PDwAAQBAJ?hl=en&gbpv=1&dq=react%20container%20and%20presentational&pg=PA95&printsec=frontcover) It splits the code according into two parts - 
+# :bricks: App Architecture
+The overall architecture of PopcornTime is based on the [Container and Presentational Pattern.](https://www.google.ca/books/edition/React_Design_Patterns_and_Best_Practices/kc6PDwAAQBAJ?hl=en&gbpv=1&dq=react%20container%20and%20presentational&pg=PA95&printsec=frontcover) It splits the code into two parts - 
 1. **Container:** the logic layer of the application
 2. **Presentation:** the view layer of the application
 
@@ -126,10 +123,11 @@ The **container component** is concerned with how the application works such as 
 
 The **presentational component** is stateless and contains the layout of the UI which displays the data passed to it via props.
 
-Each screen in PopcornTime has two files associated with it - the .js file is under *presentation* folder which contains the code for the layout of the screen, and the second .js file is under *screens* folder which is the container component of the screen. A third file which may be associated with any screen is under the *styles* folder which contains the design of the layout of the application.
+Each screen in PopcornTime has two files associated with it - a .js file under *presentation* folder which contains the code for the layout of the screen, and a corresponding .js file is under *screens* folder which is the container component of the screen. A third file which may be associated with any screen is under the *styles* folder which contains the design of the layout of a particular screen in the application.
 
-This pattern was selected as it provides an easy to understand code structure which follows Separation of Concerns principle. The layout can be easily modified without touching the logic of the application and vice versa. Further, it increases code reusability as the same presentational component can be used to display data from different sources.
-# Folder Structure
+This pattern was selected as it provides an easy to understand code structure which follows Separation of Concerns principle. The layout can be easily modified without any modifications to the logic of the application and vice versa. Further, it increases code reusability as the same presentational component can be used to display data from different sources.
+
+# :file_folder: Folder Structure
 The folder structure in React Native with a list of all files is mentioned below:
 ```
 code
@@ -195,24 +193,33 @@ C:.
 ```
 
 
-# Known Bugs
+# :spider: Known Bugs
 ![enter image description here](https://img.shields.io/badge/bugs-OPEN-red)
 
 1. **Search bar size issue on Android**
- The search bar on Home screen shrinks when the keyboard comes up on the screen. This is due to the flex layout of the Home screen. This issue was resolved by wrapping the entire layout in  [keyboard-aware-scrollview](https://www.npmjs.com/package/react-native-keyboard-aware-scrollview). However, using this package on the Home screen adversely affected the performance of the application resulting a significant slowdown in loading poster images of movies which are displayed on the Home screen by fetching them through network calls. Therefore, this fix was rolled back and the issue is open until it can be resolved without any side-effects.
- 2. **Search does not work on iOS**
+ The search bar on Home screen shrinks when the keyboard comes up on the screen. This is due to the flex layout of the Home screen. This issue was resolv ed by wrapping the entire layout in  [keyboard-aware-scrollview](https://www.npmjs.com/package/react-native-keyboard-aware-scrollview). However, using this package on the Home screen adversely affected the performance of the application resulting a significant slowdown in loading poster images of movies which are displayed on the Home screen by fetching them through network calls. Therefore, this fix was rolled back and the issue is open until it can be resolved without any side-effects.
+ 2. **Search bar does not work on iOS**
 The search bar does not work on iOS. The root cause of the issue is unknown. Due to unavailability of Apple devices, it has been tested only once on iOS and the issue has not been fixed yet.
+
 |Version|Issue|Status|
 |0.1|Search bar size issue on Android|Open|
 |0.1|Search does not work on iOS|Open|
-# Future Updates
+# :full_moon_with_face: Future Updates
 ![enter image description here](https://img.shields.io/badge/features-OPEN-orange)
 
 Features not implemented in current version (v0.1) but planned for later versions due to time constraints - 
 
  - **Create Multiple Lists**: A user can create their own custom lists.
- - **Share Lists:** A user can collaborate with friends on lists to make plans together.
-## Tech Stack
+ - **Share Lists:** A user can collaborate with friends to create and edit common lists to make plans together.
+ - **Profile Picture:** A user can add a custom photo as profile picture for their profile.
+ - **Add Friends:** A user can add other active users as friends.
+
+## :robot: Tech Stack
+![React Native](https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Expo](https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37)
+![DjangoREST](https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 
 The tech stack used for implementation of PopcornTime is described briefly in the following section:
 |Technology|Description|
@@ -222,20 +229,23 @@ The tech stack used for implementation of PopcornTime is described briefly in th
 |[Django REST Framework](https://www.django-rest-framework.org/)|Django REST is a framework written in Python Django for building Web APIs to fetch data about movies and users from the database.|
 |[PostgreSQL](https://www.postgresql.org/)| Postgres is a free, open-source relational database that is used to store all the data of PopcornTime.
 |[Pandas](https://pandas.pydata.org/)| Pandas is an open-source data manipulation and analysis tool written in Python which is extensively used in pre-processing and cleaning the data fetched from TMDB API to be stored in the database and also in writing the algorithm for generating recommendations for movies.
-  # Contribution
+
+# :fondue: Contribution
 This application was developed as a final project for the graduate course *CS 855 Mobile Computing* at **University of Regina**.
 
-👩  **Rinku Ansari**
+🧙‍♀️  **Rinku Ansari**
   
 Email: [raf122@uregina.ca](mailto:divya.bhagavathiappanshiva@mail.concordia.ca) 
 
 GitHub: [@rinku-s](https://github.com/rinku-s)
 
-# License Information
-This software is freely distributable under the MIT License. Please see License.md for more information.
+# :copyright: License Information
+
+This software is freely distributable under the MIT License. Please see *License.md* for more information.
 
 
-#  Credits and Acknowledgement
+# :pray: Credits and Acknowledgement
+
 The following open-source packages were used in development of PopcornTime:
 
  - [@react-navigation/native](https://www.npmjs.com/package/@react-navigation/native)
@@ -244,17 +254,23 @@ The following open-source packages were used in development of PopcornTime:
  - [@react-native-community/datetimepicker](https://www.npmjs.com/package/@react-native-community/datetimepicker)
  - [react-native-safe-area-context](https://www.npmjs.com/package/react-native-safe-area-context)
  - [react-native-keyboard-aware-scroll-view](https://www.npmjs.com/package/react-native-keyboard-aware-scroll-view) 
-### Other
+ 
+### :shamrock: Other
+
  > [Flaticon](flaticon.com) - Images & icons used in PopcornTime.
 
-> [shields](https://shields.io/) - Badges in README file.
-
 > [emojis cheatsheet](https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md) - Emojis used in README file.
-# Further Reading
+
+> [markdown-badges](https://github.com/Ileriayo/markdown-badges) - Pre-made badges used in README file.
+
+> [shields](https://shields.io/) Custom badges in README file.
+
+# :bookmark_tabs:Further Reading
 
  - [About Presentation and Container Pattern](https://blog.bitsrc.io/implementing-the-container-pattern-using-react-hooks-f490a8492d05).
  - [About creating REST APIs using Django REST Framework](https://stackabuse.com/creating-a-rest-api-with-django-rest-framework/).
  - [About recommendation algorithms](https://towardsdatascience.com/brief-on-recommender-systems-b86a1068a4dd.).
+
 
 
 
