@@ -200,10 +200,15 @@ C:.
  The search bar on Home screen shrinks when the keyboard comes up on the screen. This is due to the flex layout of the Home screen. This issue was resolv ed by wrapping the entire layout in  [keyboard-aware-scrollview](https://www.npmjs.com/package/react-native-keyboard-aware-scrollview). However, using this package on the Home screen adversely affected the performance of the application resulting a significant slowdown in loading poster images of movies which are displayed on the Home screen by fetching them through network calls. Therefore, this fix was rolled back and the issue is open until it can be resolved without any side-effects.
  2. **Search bar does not work on iOS**
 The search bar does not work on iOS. The root cause of the issue is unknown. Due to unavailability of Apple devices, it has been tested only once on iOS and the issue has not been fixed yet.
+3. **Navigation issue on pressing back button on Home Screen**
+On pressing the back button of the device on Android, the app navigates back to Login screen. 
 
 |Version|Issue|Status|
-|0.1|Search bar size issue on Android|Open|
-|0.1|Search does not work on iOS|Open|
+|------|-------|-----|
+|0.1|Search bar size issue on Android|[Open](https://github.com/rinku-s/popcorntime-android/issues/1)|
+|0.1|Search bar does not work on iOS|[Open](https://github.com/rinku-s/popcorntime-android/issues/2)|
+|0.1|Navigation issue on pressing back button on Home Screen|[Open](https://github.com/rinku-s/popcorntime-android/issues/3)|
+
 # :full_moon_with_face: Future Updates
 ![enter image description here](https://img.shields.io/badge/features-OPEN-orange)
 
