@@ -1,4 +1,4 @@
-# Table of Contents
+:book: # Table of Contents
 
 - About the Project
 - Features
@@ -28,7 +28,7 @@
 - Credit and Acknowledgement
 - Further Reading
 
-# PopcornTime 
+:popcorn: # PopcornTime 
 
   ![tv](https://user-images.githubusercontent.com/99785438/162727728-649748d6-cf8a-437f-a9de-f545c9d59c70.png)
 
@@ -37,7 +37,7 @@
 
 It provide a user-friendly, intuitive interface to its users to manage their catalog of movies. A user can start by registering for a profile or an account in the app. It provides a seamless experience in terms of application usage to browse through the list of movies sorted by popularity and view details about the movie such as the plot summary, runtime and release year of the movie. A user can organize the movies into Favorites and Watchlist. It also allows the users to view similar titles below for the movie that they are interested in.
 
-# Features
+:envelope: # Features
   
  -  **Create Account:** The user will create an account and log in to the account.
  -  **Search Title:** The user will use the search bar to search for any movie or tv show.
@@ -45,12 +45,12 @@ It provide a user-friendly, intuitive interface to its users to manage their cat
  -  **Add to Lists:** The user can add a title to a list to watch later or mark it as a favorite.
  -  **View Recommendations:** The user will be shown recommended titles for a selected title.
 
-# Getting Started
+:capital_abcd: # Getting Started
   
-### Pre-requisites
+:ab: ### Pre-requisites
 The app is developed and tested for Android 11 or iOS 15 and higher versions of the mobile Operating Systems.
 
-### Installation Instructions
+:page_facing_up: ### Installation Instructions
 1.  Install the latest Node
 2.  Install  [Expo](https://expo.io/)  -  `npm install expo-cli --global`
 3.  Clone the repo 
@@ -61,16 +61,17 @@ The app is developed and tested for Android 11 or iOS 15 and higher versions of 
 5.  Install the dependencies by running `npm install`  or  `yarn install`
 6.  Run  `expo start`
 
-### Get API Key from TMDB
+:old_key: ### Get API Key from TMDB
 TMDB has more than 700,000 movies in its database. to access movies data for free, create an account on TMDB to [generate a unique API key](https://developers.themoviedb.org/3/getting-started/authentication). It is free to use provided it is **cited** as the source when used.
 
   
-# App Preview
- ## Register Screen
+:movie_camera: # App Preview
+:memo:
+:pencil: ## Register Screen
  
 ![register](https://user-images.githubusercontent.com/99785438/162828499-a4cc753b-15d8-4947-a063-32f6c7a1b33b.gif)
 
- ## Login Screen
+ :pencil2: ## Login Screen
  
  Login
  
@@ -206,6 +207,7 @@ The search bar does not work on iOS. The root cause of the issue is unknown. Due
 |0.1|Search does not work on iOS|Open|
 # Future Updates
 ![enter image description here](https://img.shields.io/badge/features-OPEN-orange)
+
 Features not implemented in current version (v0.1) but planned for later versions due to time constraints - 
 
  - **Create Multiple Lists**: A user can create their own custom lists.
